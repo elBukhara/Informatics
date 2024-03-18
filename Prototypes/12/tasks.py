@@ -113,7 +113,6 @@ def task10():
         
 def task11():
     from itertools import product
-    s = '0'+ 10*'1' + 10*'2' + '0'
     ans = 100
 
     for i in product('12', repeat=20):
@@ -130,3 +129,39 @@ def task11():
             if s.count('1') == 7 and s.count('2') == 5:
                 ans = min(ans, s.count('3'))
     print(ans)
+    
+def task12():
+    from itertools import product
+
+    ans = 0
+    for i in product('12', repeat=20):
+        i = ''.join(i)
+        s = '0' + i + '0'
+        if s.count('1') == 10 and s.count('2') == 10:
+            while '00' not in s:
+                s = s.replace('012', '30', 1)
+                if '011' in s:
+                    s = s.replace('011', '20', 1)
+                    s = s.replace('022', '40', 1)
+                else:
+                    s = s.replace('01', '10', 1)
+                    s = s.replace('02', '101', 1)
+            if s.count('1') == 6 and s.count('2') == 5:
+                ans = max(ans, s.count('4'))
+
+    print(ans)
+    
+def task13():
+    for i in range(4, 10000):
+        s = '5' + i*'2'
+        while '52' in s or '1122' in s or '2222' in s:
+            if '52' in s:
+                s = s.replace('52', '11', 1)
+            if '2222' in s:
+                s = s.replace('2222', '5', 1)
+            if '1122' in s:
+                s = s.replace('1122', '25', 1)
+        if sum([int(x) for x in s]) == 64:
+            print(i)
+            break
+task13()

@@ -142,4 +142,34 @@ def task5():
                 cnt+=1
     print(cnt)
     done()
+
+def task6():
+    tracer()
     
+    k = 20
+    left(90)
+
+    pendown()
+    for i in range(2):
+        forward(9*k)
+        right(90)
+        forward(15*k)
+        right(90)
+    penup()
+
+    forward(12*k)
+    right(90)
+    pendown()
+    for i in range(2):
+        forward(6*k)
+        right(90)
+        forward(12*k)
+        right(90)
+    penup()
+
+    for x in range(-15, 18):
+        for y in range(-15, 15):
+            setpos(x*k, y*k)
+            dot(3)
+    done()
+task6()

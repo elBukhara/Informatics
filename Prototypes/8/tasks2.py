@@ -70,3 +70,21 @@ def task5():
         if s[0] != 'Ь' and 'ОЬ' not in s and 'АЬ' not in s:
             cnt += 1
     print(cnt)
+
+def task6():
+    """Светлана составляет коды из букв слова ПАРАБОЛА. Код должен состоять из 8 букв, и каждая буква в нём должна 
+    встречаться столько же раз, сколько в заданном слове. Кроме того, в коде не должны стоять рядом две гласные и две 
+    согласные буквы. Сколько кодов может составить Светлана?
+    """
+    sogl = [''.join(x) for x in permutations('ПРБЛ', r=2)]
+    glas = [''.join(x) for x in permutations('АО', r=2)] # ['АО', 'OA']
+    glas.append('АА') # ['АО', 'OA', 'AA']
+
+    ans = set()
+    for i in permutations('ПАРАБОЛА', r=8):
+        s = ''.join(i)
+        if not any(substring in s for substring in sogl) and not any(substring in s for substring in glas):
+            if s not in ans:
+                ans.add(s)
+                # print(s)
+    print(len(ans))
