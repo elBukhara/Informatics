@@ -14,7 +14,6 @@ def task2():
             cnt += 1
     print(cnt) # ANS = 1215
     
-
 def task3():
     cnt = 0
     for i in product('AB123', repeat=4):
